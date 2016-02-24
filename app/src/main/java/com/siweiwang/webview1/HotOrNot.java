@@ -5,11 +5,13 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.EditText;
+import android.util.Log;
 
-import java.security.Key;
+//import android.widget.EditText;
 
-/**
+//import java.security.Key;
+
+/*
  * Created by Siwei on 2/22/2016.
  */
 public class HotOrNot {
@@ -51,6 +53,8 @@ public class HotOrNot {
         return ourDatabase.insert(DATABASE_TABLE, null, cv);
     }
 
+
+
     public String getData() {
         String[] columns = new String[]{KEY_ROWID, KEY_NAME, KEY_HOTNESS};
         Cursor c = ourDatabase.query(DATABASE_TABLE,columns,null,null, null,null,null);
@@ -67,6 +71,53 @@ public class HotOrNot {
 
 
         return result;
+    }
+
+
+
+
+
+
+
+    public String getName(int l) {
+        String[] columns = new String[]{KEY_ROWID, KEY_NAME, KEY_HOTNESS};
+        Cursor c = ourDatabase.query(DATABASE_TABLE,columns,KEY_ROWID + "=" + l,null, null,null,null);
+
+         if (c != null){
+             c.moveToFirst();
+             return c.getString(1);
+         }
+            return null;
+    }
+
+    public String getHotness(int l) {
+        String[] columns = new String[]{KEY_ROWID, KEY_NAME, KEY_HOTNESS};
+        Cursor c = ourDatabase.query(DATABASE_TABLE,columns,KEY_ROWID + "=" + l,null, null,null,null);
+
+
+        if (c != null){
+            c.moveToFirst();
+            Log.i(c.getString(1), c.getString(2));
+            return c.getString(2);
+
+        }
+
+            return null;
+    }
+
+    public void updateEntry(int iRow, String sqlname, String hotness) {
+
+        ContentValues cvUpdate = new ContentValues();
+        cvUpdate.put(KEY_NAME, sqlname);
+        cvUpdate.put(KEY_HOTNESS, hotness);
+        ourDatabase.update(DATABASE_TABLE, cvUpdate, KEY_ROWID + "=" + iRow, null);
+
+
+    }
+
+    public void deleteEntry(int lRow) {
+
+        ourDatabase.delete(DATABASE_TABLE, KEY_ROWID + "=" + lRow, null);
     }
 
     private static class DbHelper extends SQLiteOpenHelper {

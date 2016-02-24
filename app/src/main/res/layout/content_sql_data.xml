@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_marginTop="80dp"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -12,6 +11,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
         android:text="Name"
         android:id="@+id/textName" />
 
@@ -25,7 +25,6 @@
         android:layout_height="wrap_content"
         android:text="Hotness"
         android:id="@+id/textHot"
-        android:layout_marginTop="51dp"
          />
 
     <EditText
@@ -37,16 +36,46 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="View"
-        android:id="@+id/btView"
-        android:layout_marginTop="47dp"
-
-         />
+        android:id="@+id/btView" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Update"
-        android:id="@+id/btUpdate"
-        android:layout_gravity="left" />
+        android:id="@+id/btUpdate" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enter Row ID"
+        android:id="@+id/editText3" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/etRowID" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Get Information"
+        android:id="@+id/btInfo"
+        android:onClick="onClick" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Get Entry"
+        android:id="@+id/btGetEntry"
+        android:onClick="onClick" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete Entry"
+        android:id="@+id/btDeleteEntry"
+        android:onClick="onClick" />
 
 </LinearLayout>
